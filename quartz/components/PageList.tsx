@@ -82,6 +82,20 @@ export const PageList: QuartzComponent = ({ cfg, fileData, allFiles, limit, sort
                     {title}
                   </a>
                 </h3>
+                
+                {/* --- MODIFICA: Visualizzazione Descrizione --- */}
+                {page.frontmatter?.description && (
+                  <p class="meta-desc" style={{ 
+                    margin: "0.2rem 0 0 0", 
+                    fontSize: "0.9rem", 
+                    color: "var(--gray)", 
+                    lineHeight: "1.4" 
+                  }}>
+                    {page.frontmatter.description}
+                  </p>
+                )}
+                {/* ------------------------------------------- */}
+                
               </div>
               <ul class="tags">
                 {tags.map((tag) => (

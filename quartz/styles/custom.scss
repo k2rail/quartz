@@ -1,3 +1,237 @@
 @use "./base.scss";
 
 // put your custom CSS here!
+// Stile Tag arrotondati (come nell'immagine di Ryuki)
+.tag {
+  border-radius: 4px;
+  background-color: var(--highlight);
+  color: var(--secondary);
+  font-weight: 600;
+}
+
+// Sidebar Explorer pulita
+.explorer-container {
+  font-family: 'Inter', sans-serif;
+}
+
+// Titolo del blog più grande e Arancione
+.page-title a {
+  font-family: 'JetBrains Mono', monospace;
+  font-size: 1.5rem;
+  color: var(--dark) !important; // Usa il colore arancio pesca
+}
+
+/* --- STILE DEI TAG (Globale) --- */
+.tag {
+  background-color: rgba(137, 180, 250, 0.15) !important; /* Sfondo Azzurro trasparente */
+  color: #89b4fa !important; /* Testo Azzurro (Catppuccin Blue) */
+  border: 1px solid rgba(137, 180, 250, 0.3); /* Bordino sottile tech */
+  border-radius: 4px; /* Angoli leggermente smussati */
+  padding: 0.1rem 0.4rem; /* Più compatti */
+  font-family: 'JetBrains Mono', monospace; /* Font codice */
+  font-size: 0.75rem; /* Testo leggermente più piccolo per eleganza */
+  text-decoration: none;
+  transition: all 0.2s ease;
+}
+
+.tag:hover {
+  background-color: #89b4fa !important; /* Diventa pieno al passaggio del mouse */
+  color: #1e1e2e !important; /* Testo scuro su sfondo chiaro */
+  box-shadow: 0 0 8px rgba(137, 180, 250, 0.5); /* Effetto glow */
+}
+
+/* Search Bar Minimal - Zero Bordi */
+.search-button {
+  border: none !important;
+  box-shadow: none !important;
+  background-color: transparent !important; /* Rende lo sfondo trasparente */
+  padding-left: 0 !important; /* Allinea a sinistra */
+}
+
+/* Opzionale: cambia colore testo/icona quando ci passi sopra */
+.search-button:hover p, .search-button:hover svg {
+  color: var(--secondary) !important;
+}
+
+/* Rimuove lo sfondo grigio scuro che appare di default */
+.search-button pre {
+  background-color: transparent !important;
+}
+
+/* --- FORZA TAG ORIZZONTALI (Fix Folder List) --- */
+.section-list-item .tags {
+  display: flex !important;
+  flex-direction: row !important; /* Li obbliga a stare in riga */
+  flex-wrap: wrap !important;
+  justify-content: flex-end !important; /* Allineati a destra */
+  gap: 6px !important;
+  margin-top: 4px !important;
+  padding: 0 !important;
+  width: 100% !important;
+}
+
+/* Assicura che ogni singolo tag stia nella riga */
+.section-list-item .tags > li {
+  list-style: none !important;
+  display: inline-block !important;
+  margin: 0 !important;
+}
+
+/* --- COLORE TAG (Ciano/Azzurro) --- */
+a.internal.tag-link {
+  background-color: rgba(137, 180, 250, 0.1) !important; 
+  color: #89b4fa !important; /* Azzurro */
+  border: 1px solid rgba(137, 180, 250, 0.3) !important;
+  border-radius: 4px !important;
+  padding: 2px 8px !important;
+  font-family: 'JetBrains Mono', monospace !important;
+  font-size: 0.75em !important;
+  text-decoration: none !important;
+}
+
+a.internal.tag-link:hover {
+  background-color: #89b4fa !important;
+  color: #1e1e2e !important; /* Scritta scura su sfondo azzurro */
+  border-color: #89b4fa !important;
+}
+
+/* Allineamento Header (Breadcrumbs + Darkmode) */
+.page-header {
+  display: flex;
+  align-items: center; /* Centra verticalmente */
+  margin-top: 1rem;
+  margin-bottom: 1rem;
+}
+
+/* Rende l'icona dark mode discreta nell'header */
+.darkmode-toggle {
+  margin: 0;
+  padding: 0;
+}
+
+/* --- FIX LEGGIBILITÀ TERMINALE --- */
+
+/* 1. Scurisci leggermente lo sfondo del blocco codice per contrasto */
+pre.code-block {
+  background-color: #1a1b26 !important; /* Sfondo molto scuro (stile Tokyo Night) */
+}
+
+/* 2. Forza i colori del testo ad essere leggibili */
+pre.code-block code span {
+  /* Aumenta la luminosità di tutti i colori */
+  filter: brightness(1.5) saturate(1.2);
+}
+
+/* 3. Correzione specifica per i colori "maledetti" (viola scuro/blu scuro) */
+/* Selettore che cerca span con colori scuri specifici e li fa diventare ciano/bianchi */
+pre.code-block code span[style*="color:#"] {
+    text-shadow: 0 0 1px rgba(0,0,0,0.5); /* Leggera ombra per staccare dal fondo */
+}
+
+/* --- CUSTOM SCROLLBAR --- */
+
+/* Per Firefox */
+* {
+  scrollbar-width: thin; /* Barra sottile */
+  scrollbar-color: #45475a #1e1e2e; /* Colore Barra - Colore Sfondo */
+}
+
+/* Per Chrome, Edge, Safari (Webkit) */
+*::-webkit-scrollbar {
+  width: 8px;  /* Larghezza barra verticale */
+  height: 8px; /* Altezza barra orizzontale (quella del codice nmap) */
+}
+
+/* Sfondo della barra (Track) */
+*::-webkit-scrollbar-track {
+  background: #1e1e2e; /* Stesso colore dello sfondo del sito */
+  border-radius: 4px;
+}
+
+/* La parte che si muove (Thumb) */
+*::-webkit-scrollbar-thumb {
+  background-color: #585b70; /* Grigio scuro/bluastro (molto elegante) */
+  border-radius: 4px;        /* Arrotondata */
+  border: 2px solid #1e1e2e; /* Bordo interno per effetto "galleggiante" */
+}
+
+/* Effetto quando passi sopra col mouse */
+*::-webkit-scrollbar-thumb:hover {
+  background-color: #fab387; /* Diventa arancione quando la tocchi (opzionale) */
+}
+
+/* --- FIX SPECIFICO PER BLOCCHI DI CODICE --- */
+/* Assicura che i blocchi di codice usino queste regole */
+pre, code, .code-block {
+    scrollbar-color: #45475a #1e1e2e !important;
+}
+
+/* --- TOC FIX DEFINITIVO (Funziona su Dark & Light) --- */
+
+/* Titolo "Table of Contents" */
+.toc h3 {
+  font-size: 0.9rem !important;
+  font-weight: 600 !important;    /* Semi-bold, non Black */
+  color: var(--tertiary) !important; 
+  text-transform: uppercase;
+  letter-spacing: 0.05em;
+  margin-top: 0 !important;
+}
+
+/* Link della lista - FORZIAMO la rimozione del grassetto */
+.toc ul li a {
+  font-weight: 400 !important;    /* 400 = Normale. Questo rimuove il grassetto */
+  font-size: 0.85rem !important;
+  color: var(--darkgray) !important; /* Usa il grigio del tema corrente */
+  opacity: 0.7;                   /* Abbassa il contrasto per eleganza */
+  text-decoration: none !important;
+  transition: all 0.2s ease;
+  border: none !important;        /* Rimuove eventuali bordi ereditati */
+}
+
+/* Effetto Hover (Mouse sopra) */
+.toc ul li a:hover {
+  opacity: 1 !important;
+  color: var(--secondary) !important; /* Si illumina col colore del tema */
+  padding-left: 5px;              /* Piccolo spostamento elegante */
+}
+
+/* Elemento Attivo (Sezione corrente) */
+.toc ul li.active > a {
+  font-weight: 500 !important;    /* Appena più visibile, ma NON grassetto */
+  color: var(--secondary) !important;
+  opacity: 1 !important;
+}
+
+/* --- MOBILE HEADER ALIGNMENT FIX --- */
+@media (max-width: 800px) {
+  /* Contenitore Header Mobile (Sidebar left) */
+  .left {
+    display: flex !important;
+    flex-direction: row !important;
+    align-items: center !important;
+    justify-content: space-between !important;
+    padding: 1rem !important;
+    gap: 0.5rem;
+  }
+
+  /* Reset margini per elementi header */
+  .left > * {
+    margin: 0 !important;
+  }
+
+  /* Titolo */
+  .page-title {
+    line-height: 1 !important;
+  }
+
+  /* Bottoni (Search & Hamburger) */
+  .search-button, {
+    display: flex !important;
+    align-items: center !important;
+    justify-content: center !important;
+    padding: 8px !important; /* Touch target ottimizzato */
+    margin: 0 !important;
+    height: auto !important;
+  }
+}

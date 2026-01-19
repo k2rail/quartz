@@ -8,8 +8,8 @@ export const sharedPageComponents: SharedLayout = {
   afterBody: [],
   footer: Component.Footer({
     links: {
-      GitHub: "https://github.com/jackyzha0/quartz",
-      "Discord Community": "https://discord.gg/cRFFHYye7t",
+      // GitHub: "https://github.com/jackyzha0/quartz",
+      // "Discord Community": "https://discord.gg/cRFFHYye7t",
     },
   }),
 }
@@ -17,31 +17,33 @@ export const sharedPageComponents: SharedLayout = {
 // components for pages that display a single page (e.g. a single note)
 export const defaultContentPageLayout: PageLayout = {
   beforeBody: [
+    Component.ArticleTitle(),
+    
+    // Mostra Data e Tempo di Lettura SOLO se NON è la home (index)
     Component.ConditionalRender({
-      component: Component.Breadcrumbs(),
+      component: Component.ContentMeta(),
       condition: (page) => page.fileData.slug !== "index",
     }),
-    Component.ArticleTitle(),
-    Component.ContentMeta(),
-    Component.TagList(),
+
+    // Mostra i Tag SOLO se NON è la home (index)
+    Component.ConditionalRender({
+      component: Component.TagList(),
+      condition: (page) => page.fileData.slug !== "index",
+    }),
   ],
   left: [
-    Component.PageTitle(),
-    Component.MobileOnly(Component.Spacer()),
-    Component.Flex({
-      components: [
-        {
-          Component: Component.Search(),
-          grow: true,
-        },
-        { Component: Component.Darkmode() },
-        { Component: Component.ReaderMode() },
-      ],
-    }),
-    Component.Explorer(),
-  ],
+  Component.PageTitle(),
+  Component.MobileOnly(Component.Spacer()),
+  // Component.Darkmode(),
+  Component.Search(),
+  // Questa è la parte fondamentale per la navigazione ad albero
+  Component.Explorer({
+    title: "Explorer", 
+    folderClickBehavior: "link",
+  }),
+],
   right: [
-    Component.Graph(),
+    // Component.Graph(),
     Component.DesktopOnly(Component.TableOfContents()),
     Component.Backlinks(),
   ],
@@ -59,7 +61,6 @@ export const defaultListPageLayout: PageLayout = {
           Component: Component.Search(),
           grow: true,
         },
-        { Component: Component.Darkmode() },
       ],
     }),
     Component.Explorer(),

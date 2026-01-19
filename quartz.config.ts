@@ -2,53 +2,48 @@ import { QuartzConfig } from "./quartz/cfg"
 import * as Plugin from "./quartz/plugins"
 
 /**
- * Quartz 4 Configuration
- *
- * See https://quartz.jzhao.xyz/configuration for more information.
+ * Quartz 4.0 Configuration - Ryuki Style Theme
  */
 const config: QuartzConfig = {
   configuration: {
-    pageTitle: "Quartz 4",
-    pageTitleSuffix: "",
+    pageTitle: "IVO.NINJA",
     enableSPA: true,
     enablePopovers: true,
-    analytics: {
-      provider: "plausible",
-    },
-    locale: "en-US",
-    baseUrl: "quartz.jzhao.xyz",
+    analytics: null,
+    locale: "it-IT",
+    baseUrl: "ivo.ninja",
     ignorePatterns: ["private", "templates", ".obsidian"],
-    defaultDateType: "modified",
+    defaultDateType: "created",
     theme: {
       fontOrigin: "googleFonts",
       cdnCaching: true,
       typography: {
-        header: "Schibsted Grotesk",
-        body: "Source Sans Pro",
-        code: "IBM Plex Mono",
+        header: "Inter",      // Font pulito e professionale come nell'immagine
+        body: "Inter",
+        code: "JetBrains Mono", // Il font "Hacker" per eccellenza
       },
       colors: {
+        // TRUCCO: Ho copiato i colori Dark anche qui dentro.
+        // In questo modo il sito è SEMPRE scuro.
         lightMode: {
-          light: "#faf8f8",
-          lightgray: "#e5e5e5",
-          gray: "#b8b8b8",
-          darkgray: "#4e4e4e",
-          dark: "#2b2b2b",
-          secondary: "#284b63",
-          tertiary: "#84a59d",
+          light: "#1e1e2e",      // Sfondo scuro
+          lightgray: "#313244",  // Bordi
+          gray: "#a6adc8",       // Testo secondario
+          darkgray: "#cdd6f4",   // Testo principale
+          dark: "#fab387",       // Titoli Arancioni
+          secondary: "#fab387",  // Link/Folder Arancioni
+          tertiary: "#45475a",   // Hover Grigio
           highlight: "rgba(143, 159, 169, 0.15)",
-          textHighlight: "#fff23688",
         },
         darkMode: {
-          light: "#161618",
-          lightgray: "#393639",
-          gray: "#646464",
-          darkgray: "#d4d4d4",
-          dark: "#ebebec",
-          secondary: "#7b97aa",
-          tertiary: "#84a59d",
-          highlight: "rgba(143, 159, 169, 0.15)",
-          textHighlight: "#b3aa0288",
+          light: "#1e1e2e",      // 🌑 Sfondo Blu Notte (Base Catppuccin)
+          lightgray: "#313244",  // Bordi scuri ma visibili
+          gray: "#a6adc8",       // Testo secondario (date, info)
+          darkgray: "#cdd6f4",   // Testo principale (Bianco morbido)
+          dark: "#fab387",       // 🧡 Titoli color "Peach/Arancio" (come "Ryuki's Blog")
+          secondary: "#fab387",  // Arancione (Peach) -> Rende le cartelle e i link coerenti col titolo
+          tertiary: "#45475a",   // Grigio Scuro (Surface) -> L'hover diventa sottile e professionale, non rosa
+          highlight: "rgba(250, 179, 135, 0.15)", // (Opzionale) Evidenziazione arancione tenue
         },
       },
     },
@@ -57,12 +52,12 @@ const config: QuartzConfig = {
     transformers: [
       Plugin.FrontMatter(),
       Plugin.CreatedModifiedDate({
-        priority: ["frontmatter", "git", "filesystem"],
+        priority: ["frontmatter", "filesystem"],
       }),
       Plugin.SyntaxHighlighting({
         theme: {
-          light: "github-light",
-          dark: "github-dark",
+          light: "dracula",
+          dark: "dracula", // Tema codice scuro
         },
         keepBackground: false,
       }),
@@ -86,10 +81,7 @@ const config: QuartzConfig = {
       }),
       Plugin.Assets(),
       Plugin.Static(),
-      Plugin.Favicon(),
       Plugin.NotFoundPage(),
-      // Comment out CustomOgImages to speed up build time
-      Plugin.CustomOgImages(),
     ],
   },
 }
