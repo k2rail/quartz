@@ -203,35 +203,31 @@ pre, code, .code-block {
   opacity: 1 !important;
 }
 
-/* --- MOBILE HEADER ALIGNMENT FIX --- */
-@media (max-width: 800px) {
-  /* Contenitore Header Mobile (Sidebar left) */
-  .left {
-    display: flex !important;
-    flex-direction: row !important;
-    align-items: center !important;
-    justify-content: space-between !important;
-    padding: 1rem !important;
-    gap: 0.5rem;
-  }
-
-  /* Reset margini per elementi header */
-  .left > * {
+/* --- NASCONDI FOTO PROFILO SU MOBILE --- */
+@media all and (max-width: 800px) {
+  
+  /* Cerca qualsiasi immagine che abbia "profile.png" nel nome e la nasconde */
+  img[src*="profile.png"] {
+    display: none !important;
+    height: 0 !important;
     margin: 0 !important;
   }
 
-  /* Titolo */
+}
+
+@media all and (max-width: 800px) {
+
+
+  /* 2. CENTRA IL TITOLO (visto che ora è l'unico elemento nella barra) */
+  .page .page-header {
+    justify-content: center !important; /* Centra orizzontalmente */
+  }
+  
   .page-title {
-    line-height: 1 !important;
+    margin: 0 !important;
+    text-align: center !important;
+    position: static !important; /* Resetta posizioni strane */
+    transform: none !important;
   }
 
-  /* Bottoni (Search & Hamburger) */
-  .search-button, {
-    display: flex !important;
-    align-items: center !important;
-    justify-content: center !important;
-    padding: 8px !important; /* Touch target ottimizzato */
-    margin: 0 !important;
-    height: auto !important;
-  }
 }
