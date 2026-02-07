@@ -12,7 +12,7 @@ export type Analytics =
     }
   | {
       provider: "google"
-      tagId: G-YXSM3YFMFD
+      tagId: 'G-YXSM3YFMFD'
     }
   | {
       provider: "umami"
