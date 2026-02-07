@@ -217,7 +217,7 @@ Questo hash non è la password in chiaro, ma può essere **decifrato** offline (
 hashcat -a 0 -m 5600 julia.hash ~/lab/HTB/BOX/rockyou.txt
 ```
 
-###  Vadazione tramite SMB
+###  Validazione tramite SMB
 
 Con le credenziali ottenute, utilizziamo **impacket-smbclient** per verificare a quali risorse julia.wong può accedere tramite il protocollo SMB:
 ```bash
