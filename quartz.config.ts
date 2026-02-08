@@ -9,7 +9,7 @@ const config: QuartzConfig = {
     pageTitle: "IVO.NINJA",
     enableSPA: true,
     enablePopovers: true,
-    analytics: null,
+    analytics:{ provider: 'google', tagId: 'G-YXSM3YFMFD' },
     locale: "it-IT",
     baseUrl: "ivo.ninja",
     ignorePatterns: ["private", "templates", ".obsidian"],
